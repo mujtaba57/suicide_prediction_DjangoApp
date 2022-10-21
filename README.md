@@ -1,0 +1,1 @@
+# suicide_prediction_DjangoApp
