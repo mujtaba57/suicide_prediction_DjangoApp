@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html><head>
+{% load static %}
+<!--<!DOCTYPE html>-->
+<html>
+<head>
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--    <link rel="stylesheet"  type= "text/css " href="css/styleproject.css">-->
-<font color="black" size="4">
+    <link rel="stylesheet"  type= "text/css" href="{% static 'css/styleproject.css' %}">
+<head color="black" size="4">
     <marquee><b><i> &nbsp  &nbsp  &nbsp  &nbsp  A rewiew machine for suicide</i></b></marquee>
-	<style>
+<style>
 	.navbar{
             background-color:#000;
             border-radius: 15px;
@@ -371,6 +373,7 @@ ul{
 
 
 	</style>
+</head>
 <body>
 <header>
 
@@ -409,7 +412,7 @@ ul{
 </div>
 
 <div class="rightside">
-<!--		   <img  align="right" src="images/p2.jpg">-->
+		   <img  align="right" src="{% static 'images/p2.jpg' %}">
 </div>
 
 </main>
