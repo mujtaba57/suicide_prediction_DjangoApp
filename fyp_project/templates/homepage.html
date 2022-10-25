@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <!-- Created By CodingNepal - www.codingnepalweb.com -->
 <html lang="en" dir="ltr">
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!------<title> Website Layout | CodingLab</title>------>
-<!--    <link rel="stylesheet" href="aa.css">-->
+<!--    <link rel="stylesheet" href="{% static 'aa.css' %}">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
       <font color="black" size="2"></font>
     <marquee><b><i>A rewiew machine for suicide</i></b></marquee>
@@ -117,7 +118,7 @@ nav .menu{
   color: black;
 }
 .img{
-  background: url('img3.jpg')no-repeat;
+<!--  background: url('img3.jpg')no-repeat;-->
   width: 100%;
   height: 100vh;
   background-size: cover;
@@ -234,9 +235,22 @@ nav .menu{
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.form-check label {
+    padding: 0px 10px;
+}
+.form-check input {
+    width: 50%;
+    display: block;
+    float: left;
+}
+.form-check input[type="radio"]{
+    width: auto;
 
+}
+.table-data {
+    padding: 0px 20px;
 
-
+}
 
     </style>
    </head>
@@ -251,7 +265,7 @@ nav .menu{
       <ul>
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="">About </a></li>
-		       <li><a href="">Logout</a></li>
+		       <li><a href="{% url 'logout' %}">Logout</a></li>
 
       </ul>
     </div>
@@ -259,34 +273,78 @@ nav .menu{
 
   <div class="img"></div>
   <div class="center">
-    <div  style="color:#020e0b" class="title">Sucide Thought Detection</div>
-  	<textarea class="textarea" placeholder="Enter your text......"  rows="10" cols="40"></textarea>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div  style="color:#020e0b" class="title">Suicide Thought Detection</div>
+      <form action="/result/" method="post" style="margin-top:20px;">
+          {% csrf_token %}
+          <div>
+              <textarea class="textarea" name="textfield" placeholder="Enter your text......"  rows="10" cols="40"></textarea>
+          </div>
+          <div class="dropdown" style="margin-top:20px;">
+            <div class="form-check">
+              <input class="form-check-input" value=0 type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Random Forest Classifier
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" value=1 type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+              <label class="form-check-label" for="flexRadioDefault2">
+                Logistic Regression
+              </label>
+            </div>
+              <div class="form-check">
+              <input class="form-check-input" value=2 type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+              <label class="form-check-label" for="flexRadioDefault2">
+                SVM
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" value=3 type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+              <label class="form-check-label" for="flexRadioDefault2">
+                Gradient Boosting
+              </label>
+            </div>
+              <div class="form-check">
+              <input class="form-check-input" value=4 type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
+              <label class="form-check-label" for="flexRadioDefault2">
+                KNN Classifier
+              </label>
+            </div>
+              <div class="form-check">
+              <input class="form-check-input" value=5 type="radio" name="flexRadioDefault" id="flexRadioDefault6">
+              <label class="form-check-label" for="flexRadioDefault2">
+                All
+              </label>
+            </div>
+          </div>
+          <div class="btns">
+            <button type="submit">Analysis</button>
+          </div>
+      </form>
+    {% if result != "" %}
+      <div style="display: inline-block; align-item:center; margin:20px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" class="table-data">#</th>
+              <th scope="col" class="table-data">Classifier Name</th>
+              <th scope="col" class="table-data">Prediction</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for key, value in result.items %}
+            <tr>
+              <th scope="row" class="table-data">1</th>
+              <td class="table-data">{{key}}</td>
+              <td class="table-data">{{value}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
 
-
-    <div class="btns">
-
-      <button style="color:#fff">Analysis</button>
-<div class="dropdown">
-  <button class="dropbtn">Algorithms</button>
-  <div class="dropdown-content">
-    <a href="#">Logistic Regression</a>
-    <a href="#">Suport Vector Machine</a>
-    <a href="#">Gradient Boosting</a>
-	<a href="#">Random Forest</a>
-	   <a href="#">KNN</a>
-
-
-  </div>
-</div>
-    </div>
-	       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-<!--	<script src="select.js"></script>-->
+<!--	<script src="{% static 'js/select.js' %}"></script>-->
 
 
 </div>
