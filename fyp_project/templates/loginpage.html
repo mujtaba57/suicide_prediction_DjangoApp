@@ -206,6 +206,11 @@ form .btn input[type="submit"]{
 
       <div class="wrapper">
          <div class="title-text">
+            {% if msg %}
+               <div style="align-item: center; color: red;">
+                  <span>{{msg}}</span>
+               </div>
+            {% endif %}
             <div class="title login">
                Login Form
             </div>

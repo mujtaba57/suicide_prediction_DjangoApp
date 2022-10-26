@@ -277,35 +277,35 @@ nav .menu{
       <form action="/result/" method="post" style="margin-top:20px;">
           {% csrf_token %}
           <div>
-              <textarea class="textarea" name="textfield" placeholder="Enter your text......"  rows="10" cols="40"></textarea>
+              <textarea class="textarea" name="textfield" placeholder="Enter your text......"  rows="10" cols="40" required></textarea>
           </div>
           <div class="dropdown" style="margin-top:20px;">
             <div class="form-check">
-              <input class="form-check-input" value=0 type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <input class="form-check-input" value=0 type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
               <label class="form-check-label" for="flexRadioDefault1">
                 Random Forest Classifier
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" value=1 type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+              <input class="form-check-input" value=1 type="radio" name="flexRadioDefault" id="flexRadioDefault2">
               <label class="form-check-label" for="flexRadioDefault2">
                 Logistic Regression
               </label>
             </div>
               <div class="form-check">
-              <input class="form-check-input" value=2 type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+              <input class="form-check-input" value=2 type="radio" name="flexRadioDefault" id="flexRadioDefault3">
               <label class="form-check-label" for="flexRadioDefault2">
                 SVM
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" value=3 type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+              <input class="form-check-input" value=3 type="radio" name="flexRadioDefault" id="flexRadioDefault4">
               <label class="form-check-label" for="flexRadioDefault2">
                 Gradient Boosting
               </label>
             </div>
               <div class="form-check">
-              <input class="form-check-input" value=4 type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
+              <input class="form-check-input" value=4 type="radio" name="flexRadioDefault" id="flexRadioDefault5">
               <label class="form-check-label" for="flexRadioDefault2">
                 KNN Classifier
               </label>
