@@ -3,7 +3,7 @@ from .models import RegisterUser
 from django.contrib.auth import logout
 from django.http import HttpResponse
 from prediction_file.prediction import get_prediction_rf
-
+import hashlib
 
 global authorize_user
 
@@ -31,7 +31,8 @@ def handlelogin(request):
             if "loginusername" in request.POST:
                 loginusername = request.POST['loginusername']
                 loginpassword = request.POST['loginpassword']
-                user = RegisterUser.objects.filter(email=loginusername, password=loginpassword).exists()
+                encMessage = hashlib.sha1(loginpassword.encode())
+                user = RegisterUser.objects.filter(email=loginusername, password=encMessage.hexdigest()).exists()
                 if user:
                     authorize_user = True
                     return render(request, "homepage.html")
@@ -43,7 +44,8 @@ def handlelogin(request):
                 password = request.POST['password']
                 cnf_password = request.POST['cnf_password']
                 if password == cnf_password:
-                    new_user = RegisterUser.objects.create(email=email, password=password)
+                    encMessage = hashlib.sha1(password.encode())
+                    new_user = RegisterUser.objects.create(email=email, password=encMessage.hexdigest())
                     if new_user:
                         msg = "User successfully Registered"
                         return render(request, "loginpage.html", {"msg": msg})

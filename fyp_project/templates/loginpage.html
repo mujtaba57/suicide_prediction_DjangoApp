@@ -206,11 +206,6 @@ form .btn input[type="submit"]{
 
       <div class="wrapper">
          <div class="title-text">
-            {% if msg %}
-               <div style="align-item: center; color: red;">
-                  <span>{{msg}}</span>
-               </div>
-            {% endif %}
             <div class="title login">
                Login Form
             </div>
@@ -218,6 +213,11 @@ form .btn input[type="submit"]{
                Signup Form
             </div>
          </div>
+         {% if msg %}
+            <div class="msg-div" style="color: red;">
+               <span style="margin-left: 50px;">{{msg}}</span>
+            </div>
+         {% endif %}
          <div class="form-container">
             <div class="slide-controls">
                <input type="radio" name="slide" id="login" checked>
