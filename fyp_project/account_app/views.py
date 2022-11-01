@@ -4,8 +4,11 @@ from django.contrib.auth import logout
 from django.http import HttpResponse
 from prediction_file.prediction import get_prediction_rf
 import hashlib
+import smtplib
 
+forget_email = ""
 global authorize_user
+
 
 
 def dashboardPage(request):
@@ -81,6 +84,69 @@ def forgetPasswordPage(request):
 
 def logoutPage(request):
     global authorize_user
-    authorize_user = False
-    logout(request)
+    if authorize_user:
+        authorize_user = False
+        logout(request)
     return redirect('login')
+
+def aboutUs(request):
+    global authorize_user
+    try:
+        if authorize_user:
+            return render(request, "about.html")
+        else:
+            return HttpResponse("Unauthenticated user")
+    except Exception as e:
+        return HttpResponse(e.args[0])
+
+def handleforgetPassword(request):
+    global forget_email
+    if request.method == "POST":
+        email = request.POST["email"]
+        forget_email = email
+        print(email)
+        # s = smtplib.SMTP('smtp.gmail.com', 587)
+        # s.starttls()
+        # msg = email.message.Message()
+        # msg['Subject'] = 'Reset Password Link'
+        # msg['From'] = 'Verification email'
+        # msg['To'] = email
+        # msg.add_header('Content-Type', 'text/html')
+        # msg.set_payload("""
+        #         This is the verified message from Rasa-ChatBot for Authorized status. Click the below link
+        #         to visit your account.<br>
+        #         http://127.0.0.1:8000/resetpassword/.
+        #         This message is from CHATBOT-RASA powered by Musa.<br>
+        #         For more Information contact at abc@gmail.com
+        #         """)
+        # s.login("", "")
+        # s.sendmail(msg['From'], [msg['To']], msg.as_string())
+        # s.quit()
+
+        msg = """
+                    This message is only for registered user.
+                    Reset Password link sent to your register email account. 
+                """
+        return render(request, "forgetpassword.html", {"msg": msg})
+def resetPass(request):
+    return render(request, "newpass.html")
+
+def postResetPass(request):
+    global forget_email
+    if request.method == "POST":
+        passw = request.POST["password"]
+        cnf_pass = request.POST["cnf_password"]
+
+        if passw == cnf_pass:
+            encMessage = hashlib.sha1(passw.encode())
+            new_user = RegisterUser.objects.update(email=forget_email, password=encMessage.hexdigest())
+            if new_user:
+                msg = "successfully password changes"
+                return render(request, "loginpage.html", {"msg": msg})
+            else:
+                msg = "user not registeres"
+                return render(request, "newpass.html", {"msg": msg})
+        else:
+            msg = "password not matched"
+            return render(request, "newpass.html", {"msg": msg})
+

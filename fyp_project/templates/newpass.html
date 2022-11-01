@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>  </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/new.css' %}"/>
+  <font color="black"  size="4">    
+    <marquee><b><i> &nbsp  &nbsp  &nbsp  &nbsp  A rewiew machine for suicide</i></b></marquee>
+
+</head>
+<body>
+
+<div class="form-container">
+    <form action="/postresetpassword/" method="POST" class="form-wrap">
+        {% csrf_token %}
+        <h2 color=" #DDA94B">New Password</h2>
+        <div class="form-box">
+            <input type="text" name="password" align="center" placeholder="New password" /><br>&nbsp  &nbsp  &nbsp  &nbsp
+			<input type="text" name="cnf_password" align="center" placeholder="Confirm password" />
+        </div>&nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp
+		&nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp
+		&nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp
+		&nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp
+        <div class="form-submit">
+            <input type="submit" value="Done"/>
+        </div>
+        {% if msg %}
+            <div class="msg-div" style="color: red;">
+               <span style="margin-left: 50px;">{{msg}}</span>
+            </div>
+        {% endif %}
+    </form>
+</div>
+
+</body>
+</html>

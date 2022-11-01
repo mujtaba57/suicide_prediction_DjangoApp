@@ -13,5 +13,9 @@ urlpatterns = [
 
     path('handlelogin/', views.handlelogin, name='handlelogin'),
     path('result/', views.resultPage, name='result'),
-    path('logout/', views.logoutPage, name='logout')
+    path('logout/', views.logoutPage, name='logout'),
+    path('aboutus/', views.aboutUs, name='aboutus'),
+    path('resetpassword/', views.resetPass, name='resetpass'),
+    path('handleforget/', views.handleforgetPassword, name='handleforgetpassword'),
+    path('postresetpassword/', views.postResetPass, name='postresetpass'),
 ]
