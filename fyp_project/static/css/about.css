@@ -1,0 +1,13 @@
+ * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: radial-gradient( circle farthest-corner at 20% 30%, #1E4174 0%,#DDA94B 80% );
+}
+p{
+	font-size:30px;
+	text-align:center,
+}
