@@ -2,12 +2,12 @@ from django.shortcuts import render, redirect
 from .models import RegisterUser
 from django.contrib.auth import logout
 from django.http import HttpResponse
-from prediction_file.prediction import get_prediction_rf
+from prediction_file.prediction import rfClassifier, LRClassifier, GBClassifier, KNNClassifier
 import hashlib
 import smtplib
 
 forget_email = ""
-global authorize_user
+authorize_user = False
 
 
 
@@ -70,9 +70,18 @@ def resultPage(request):
             radio_btn = int(request.POST["flexRadioDefault"])
 
             if radio_btn == 5:
-                pass
+                result["Gradient Boosting"] = GBClassifier(text)
+                result["Logistic Regression"] = LRClassifier(text)
+                result["KNN Classifier"] = KNNClassifier(text)
+                result["Random Forest Classifier"] = rfClassifier(text)
+            elif radio_btn == 3:
+                result[classifier_list[radio_btn]] = GBClassifier(text)
+            elif radio_btn == 1:
+                result[classifier_list[radio_btn]] = LRClassifier(text)
+            elif radio_btn == 4:
+                result[classifier_list[radio_btn]] = KNNClassifier(text)
             else:
-                result[classifier_list[radio_btn]] = get_prediction_rf(text, radio_btn)
+                result[classifier_list[radio_btn]] = rfClassifier(text)
         return render(request, "homepage.html", {"result": result})
     except Exception as e:
         return HttpResponse(e.args[0])
