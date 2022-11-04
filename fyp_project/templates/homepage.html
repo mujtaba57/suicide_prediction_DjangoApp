@@ -334,7 +334,7 @@ nav .menu{
           <tbody>
             {% for key, value in result.items %}
             <tr>
-              <th scope="row" class="table-data">1</th>
+              <th scope="row" class="table-data">{{forloop.counter}}</th>
               <td class="table-data">{{key}}</td>
               <td class="table-data">{{value}}</td>
             </tr>
