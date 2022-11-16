@@ -67,7 +67,7 @@ def resultPage(request):
     try:
         if request.method == "POST":
             text = request.POST["textfield"]
-            radio_btn = int(request.POST["flexRadioDefault"])
+            radio_btn = int(request.POST.get("dropdown", 0))
 
             if radio_btn == 5:
                 result["Gradient Boosting"] = GBClassifier(text)
