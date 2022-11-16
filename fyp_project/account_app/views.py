@@ -12,9 +12,24 @@ authorize_user = False
 
 
 def dashboardPage(request):
+    """
+    "When the user requests the dashboard page, render the dashboard.html template."
+    
+    The render function takes two arguments: the request object and the name of the template to render
+    
+    :param request: The request is an HttpRequest object. It contains metadata about the request
+    :return: The dashboard.html file is being returned.
+    """
     return render(request, "dashboard.html")
 
+
 def homePage(request):
+    """
+    If the user is authorized, render the homepage.html template. Otherwise, return an error message
+    
+    :param request: The request object is an HttpRequest object. It contains metadata about the request
+    :return: The homePage function is returning a render of the homepage.html file.
+    """
     global authorize_user
     try:
         if authorize_user:
@@ -24,10 +39,25 @@ def homePage(request):
     except Exception as e:
         return HttpResponse(e.args[0])
 
+
 def loginPage(request):
+    """
+    It takes a request object as an argument, and returns a rendered template called "loginpage.html"
+    
+    :param request: This is the request object that is sent to the view
+    :return: The login page is being returned.
+    """
     return render(request, "loginpage.html")
 
+
 def handlelogin(request):
+    """
+    It takes a request object as input, and returns a response object
+    
+    :param request: The request object is an HttpRequest object. It contains metadata about the request,
+    including the HTTP method
+    :return: the response of the request.
+    """
     global authorize_user
     try:
         if request.method == "POST":
@@ -61,6 +91,14 @@ def handlelogin(request):
 
 
 def resultPage(request):
+    """
+    It takes the text from the textfield and the radio button value from the dropdown and then calls the
+    appropriate function to classify the text
+    
+    :param request: The request object is an HttpRequest object. It contains metadata about the request,
+    including the HTTP method
+    :return: The result is being returned.
+    """
     result = {}
     classifier_list = ["Random Forest Classifier", "Logistic Regression", "SVM",
                        "Gradient Boosting", "KNN Classifier", "All"]
@@ -92,16 +130,37 @@ def resultPage(request):
 
 
 def forgetPasswordPage(request):
+    """
+    It renders the forgetpassword.html page
+    
+    :param request: The request object is an HttpRequest object. It contains metadata about the request,
+    such as the HTTP method, host, path, and more
+    :return: the render of the forgetpassword.html page.
+    """
     return render(request, "forgetpassword.html")
 
+
 def logoutPage(request):
+    """
+    If the user is logged in, log them out and redirect them to the login page
+    
+    :param request: The request is an HttpRequest object
+    :return: the redirect function.
+    """
     global authorize_user
     if authorize_user:
         authorize_user = False
         logout(request)
     return redirect('login')
 
+
 def aboutUs(request):
+    """
+    If the user is authorized, render the about.html page.
+    
+    :param request: The request object is an HttpRequest object. It contains metadata about the request
+    :return: The aboutUs function is returning the about.html page.
+    """
     global authorize_user
     try:
         if authorize_user:
@@ -111,7 +170,15 @@ def aboutUs(request):
     except Exception as e:
         return HttpResponse(e.args[0])
 
+
 def handleforgetPassword(request):
+    """
+    It takes the email address from the user, sends a reset password link to the email address, and then
+    renders the forgetpassword.html page with a message
+    
+    :param request: The initial request object sent from the browser
+    :return: the render function.
+    """
     global forget_email
     if request.method == "POST":
         email = request.POST["email"]
@@ -140,10 +207,28 @@ def handleforgetPassword(request):
                     Reset Password link sent to your register email account. 
                 """
         return render(request, "forgetpassword.html", {"msg": msg})
+
+
 def resetPass(request):
+    """
+    It renders the newpass.html template
+    
+    :param request: The request object is an HttpRequest object. It contains metadata about the request,
+    including the HTTP method, host, path, and more
+    :return: The newpass.html file is being returned.
+    """
     return render(request, "newpass.html")
 
+
 def postResetPass(request):
+    """
+    If the request method is POST, then get the password and confirm password from the request, and if
+    they match, then update the password in the database
+    
+    :param request: The request object is an HttpRequest object. It contains metadata about the request,
+    including the HTTP method
+    :return: the render function.
+    """
     global forget_email
     if request.method == "POST":
         passw = request.POST["password"]
