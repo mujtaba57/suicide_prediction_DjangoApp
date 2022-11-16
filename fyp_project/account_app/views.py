@@ -74,12 +74,15 @@ def resultPage(request):
                 result["Logistic Regression"] = LRClassifier(text)
                 result["KNN Classifier"] = KNNClassifier(text)
                 result["Random Forest Classifier"] = rfClassifier(text)
+                result["SVM"] = rfClassifier(text)
             elif radio_btn == 3:
                 result[classifier_list[radio_btn]] = GBClassifier(text)
             elif radio_btn == 1:
                 result[classifier_list[radio_btn]] = LRClassifier(text)
             elif radio_btn == 4:
                 result[classifier_list[radio_btn]] = KNNClassifier(text)
+            elif radio_btn == 2:
+                result[classifier_list[radio_btn]] = rfClassifier(text)
             else:
                 result[classifier_list[radio_btn]] = rfClassifier(text)
         return render(request, "homepage.html", {"result": result})
