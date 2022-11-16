@@ -6,253 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!------<title> Website Layout | CodingLab</title>------>
-<!--    <link rel="stylesheet" href="{% static 'aa.css' %}">-->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
       <font color="black" size="2"></font>
     <marquee><b><i>A rewiew machine for suicide</i></b></marquee>
-	<style>
-
-      body {
-        background-image:radial-gradient( circle farthest-corner at 20% 30%, #1E4174 0%,#DDA94B 80% ); ;
-
-      }
-      .textarea{
-        background-color: white;
-        color: black;
-        padding: 1em;
-        border-radius: 10px;
-        border: 2px solid transparent;
-        outline: none;
-      }
-
-.dropbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: seagreen;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #ddd;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
-}
-
-
-::selection{
-  color: #000;
-  background: #fff
-}
-nav{
-  position: fixed;
-  background: #1b1b1b;
-  width: 100%;
-  padding: 5px 0;
-  z-index: 12;
-}
-nav .menu{
-  max-width: 1250px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-}
-.menu .logo a{
-  text-decoration: none;
-  color: #fff;
-  font-size: 35px;
-  font-weight: 600;
-}
-.menu ul{
-  display: inline-flex;
-}
-.menu ul li{
-  list-style: none;
-  margin-left: 7px;
-}
-.menu ul li:first-child{
-  margin-left: 0px;
-}
-.menu ul li a{
-  text-decoration: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  padding: 8px 15px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-.menu ul li a:hover{
-  background: #fff;
-  color: black;
-}
-.img{
-<!--  background: url('img3.jpg')no-repeat;-->
-  width: 100%;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-.img::before{
-  content: '';
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.4);
-}
-.center{
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  padding: 0 20px;
-  text-align: center;
-}
-.center .title{
-  color: #fff;
-  font-size: 55px;
-  font-weight: 600;
-}
-.center .sub_title{
-  color: #fff;
-  font-size: 52px;
-  font-weight: 600;
-}
-.center .btns{
-  margin-top: 20px;
-}
-.center .btns button{
-  height: 55px;
-  width: 170px;
-  border-radius: 5px;
-  border: none;
-  margin: 0 10px;
-  border: 2px solid white;
-  font-size: 20px;
-  font-weight: 500;
-  padding: 0 10px;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.3s ease;
-}
-.center .btns button:first-child{
-  color: #fff;
-  background: none;
-}
-.btns button:first-child:hover{
-  background: white;
-  color: black;
-}
-.center .btns button:last-child{
-  background: white;
-  color: black;
-}
-
-.custom-select {
-  position: relative;
-  font-family: Arial;
-}
-
-.custom-select select {
-  display: none;
-}
-
-.select-selected {
-  background-color: gray;
-}
-
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
-
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 7px;
-}
-
-.select-items div,.select-selected {
-  color: #ffffff;
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-}
-
-.select-items {
-  position: absolute;
-  background-color: seagreen;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-.select-hide {
-  display: none;
-}
-
-.select-items div:hover, .same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.form-check label {
-    padding: 0px 10px;
-}
-.form-check input {
-    width: 50%;
-    display: block;
-    float: left;
-}
-.form-check input[type="radio"]{
-    width: auto;
-
-}
-.table-data {
-    padding: 0px 20px;
-
-}
-
-    </style>
    </head>
 <body >
 
@@ -279,46 +36,17 @@ nav .menu{
           <div>
               <textarea class="textarea" name="textfield" placeholder="Enter your text......"  rows="10" cols="40" required></textarea>
           </div>
-          <div class="dropdown" style="margin-top:20px;">
-            <div class="form-check">
-              <input class="form-check-input" value=0 type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-              <label class="form-check-label" for="flexRadioDefault1">
-                Random Forest Classifier
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" value=1 type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-              <label class="form-check-label" for="flexRadioDefault2">
-                Logistic Regression
-              </label>
-            </div>
-              <div class="form-check">
-              <input class="form-check-input" value=2 type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-              <label class="form-check-label" for="flexRadioDefault2">
-                SVM
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" value=3 type="radio" name="flexRadioDefault" id="flexRadioDefault4">
-              <label class="form-check-label" for="flexRadioDefault2">
-                Gradient Boosting
-              </label>
-            </div>
-              <div class="form-check">
-              <input class="form-check-input" value=4 type="radio" name="flexRadioDefault" id="flexRadioDefault5">
-              <label class="form-check-label" for="flexRadioDefault2">
-                KNN Classifier
-              </label>
-            </div>
-              <div class="form-check">
-              <input class="form-check-input" value=5 type="radio" name="flexRadioDefault" id="flexRadioDefault6">
-              <label class="form-check-label" for="flexRadioDefault2">
-                All
-              </label>
-            </div>
-          </div>
+
           <div class="btns">
             <button type="submit">Analysis</button>
+            <select class="form-select" aria-label="Default select example" name="dropdown" id="algo-select">
+              <option value=0 selected>Random Forest Classifier</option>
+              <option value=1>Logistic Regression</option>
+              <option value=2>SVM</option>
+              <option value=3>Gradient Boosting</option>
+              <option value=4>KNN Classifier</option>
+              <option value=5>All</option>
+            </select>
           </div>
       </form>
     {% if result != "" %}
@@ -326,17 +54,17 @@ nav .menu{
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" class="table-data">#</th>
-              <th scope="col" class="table-data">Classifier Name</th>
-              <th scope="col" class="table-data">Prediction</th>
+              <th scope="col" class="table-data table_data">#</th>
+              <th scope="col" class="table-data table_data">Classifier Name</th>
+              <th scope="col" class="table-data table_data">Prediction</th>
             </tr>
           </thead>
           <tbody>
             {% for key, value in result.items %}
             <tr>
-              <th scope="row" class="table-data">{{forloop.counter}}</th>
-              <td class="table-data">{{key}}</td>
-              <td class="table-data">{{value}}</td>
+              <th scope="row" class="table-data table_data">{{forloop.counter}}</th>
+              <td class="table-data table_data">{{key}}</td>
+              <td class="table-data table_data">{{value}}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -344,7 +72,7 @@ nav .menu{
       </div>
     {% endif %}
 
-<!--	<script src="{% static 'js/select.js' %}"></script>-->
+	<script src="{% static 'js/select.js' %}"></script>
 
 
 </div>
